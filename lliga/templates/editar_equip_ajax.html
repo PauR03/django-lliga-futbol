@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Equip</title>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            fetch("http://127.0.0.1:8000/api/get_lligues")
+                .then(response => response.json())
+                .then(data => {
+                    const lligues = data.lligues
+                    const select = document.querySelector("#lliga")
+
+                    lligues.forEach(lliga => {
+                        const { id, nom } = lliga
+                        select.innerHTML += `<option value="${id}">${nom}</option>`
+                    });
+                });
+        })
+    </script>
+</head>
+
+<body>
+    <h1>Edita un Equip</h1>
+    <select id="lliga">
+        <option value="">...selecciona lliga...</option>
+    </select>
+    <br>
+    <select id="equip" disabled>
+    </select>
+</body>
+
+</html>
